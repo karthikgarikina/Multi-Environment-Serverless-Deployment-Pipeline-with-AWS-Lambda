@@ -1,14 +1,22 @@
 services:
   check:
     build: .
+    volumes:
+      - .:/workspace
+    env_file: .env
     command: sh scripts/check.sh
 
   test:
     build: .
+    volumes:
+      - .:/workspace
+    env_file: .env
     command: pytest -v
 
   deploy:
     build: .
+    volumes:
+      - .:/workspace
     env_file: .env
     environment:
       OWNER: ${PROJECT_OWNER}

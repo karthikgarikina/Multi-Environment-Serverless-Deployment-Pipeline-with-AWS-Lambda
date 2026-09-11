@@ -59,10 +59,6 @@ resource "aws_lambda_alias" "green" {
   description      = "Candidate green production version"
   function_name    = module.lambda.function_name
   function_version = module.lambda.version
-
-  lifecycle {
-    ignore_changes = [function_version]
-  }
 }
 
 module "api" {
@@ -71,7 +67,7 @@ module "api" {
   stage_name           = var.api_gateway_stage_name
   lambda_invoke_arn    = replace(module.lambda.invoke_arn, "/invocations", ":${var.active_color}/invocations")
   lambda_function_name = "${module.lambda.function_name}:${var.active_color}"
-  api_key_value        = var.api_key_value
+  api_key_value        = "${var.api_key_value}_prod"
   tags                 = local.tags
 
   depends_on = [

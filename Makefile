@@ -70,6 +70,8 @@ prod-green:
 		-var="api_key_value=$(API_KEY_VALUE)" \
 		-var="active_color=green" \
 		-var="deployment_color=Green"
+	VERSION=$$(terraform -chdir=terraform/environments/prod output -raw published_version); \
+	aws lambda update-alias --function-name serverless-hello-prod-hello --name green --function-version "$$VERSION" --region $(AWS_REGION) || true
 
 destroy-dev:
 	terraform -chdir=terraform/environments/dev destroy -auto-approve -var="region=$(AWS_REGION)" -var="owner=$(OWNER)" -var="api_key_value=$(API_KEY_VALUE)"

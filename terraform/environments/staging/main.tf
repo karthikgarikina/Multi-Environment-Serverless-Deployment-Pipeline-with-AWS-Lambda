@@ -47,6 +47,6 @@ module "api" {
   stage_name           = var.api_gateway_stage_name
   lambda_invoke_arn    = module.lambda.invoke_arn
   lambda_function_name = module.lambda.function_name
-  api_key_value        = var.api_key_value
+  api_key_value        = "${var.api_key_value}_staging"
   tags                 = local.tags
 }
