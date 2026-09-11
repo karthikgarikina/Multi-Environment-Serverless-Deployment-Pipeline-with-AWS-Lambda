@@ -1,9 +1,0 @@
-# 1. dev_pipeline_run.png
-# 2. staging_manual_approval.png
-# 3. api_gateway_stages.png
-# 4. dev_curl_response.png
-# 5. staging_curl_response.png
-# 6. lambda_aliases.png
-# 7. prod_blue_response.png
-# 8. prod_green_response.png
-# 9. cloudwatch_alarm.png
