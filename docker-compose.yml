@@ -1,0 +1,16 @@
+services:
+  check:
+    build: .
+    command: sh scripts/check.sh
+
+  test:
+    build: .
+    command: pytest -v
+
+  deploy:
+    build: .
+    env_file: .env
+    environment:
+      OWNER: ${PROJECT_OWNER}
+    entrypoint: ["sh", "scripts/deploy.sh"]
+    command: ["dev"]
