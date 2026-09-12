@@ -183,6 +183,12 @@ In **Settings → Environments**:
 
 ---
 
+## Demo Video
+
+https://youtu.be/nhJE1IYlqhg
+
+---
+
 ## Teardown
 ```bash
 docker compose run --rm deploy make destroy-dev
